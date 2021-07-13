@@ -1,3 +1,4 @@
+from .models import Profile
 from .forms import LoginForm, UserRegistrationForm
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -46,6 +47,8 @@ def register(request):
                 user_form.cleaned_data['password'])
             # Save the User object
             new_user.save()
+            # Create the user profile
+            Profile.objects.create(user=new_user)
             return render(request,
                           'account/register_done.html',
                           {'new_user': new_user})
