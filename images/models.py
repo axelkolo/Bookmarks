@@ -1,4 +1,3 @@
-from django import reverse
 from django.db import models
 from django.conf import settings
 class Image(models.Model):
